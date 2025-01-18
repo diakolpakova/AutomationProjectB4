@@ -21,9 +21,6 @@ public class TOO_css_isDisplayed {
         System.out.println("forgotPasswordHeading.getText() = " + forgotPasswordHeading.isDisplayed());
 
 
-
-        System.out.println("forgotPasswordHeading.getText() = " + forgotPasswordHeading.isDisplayed());
-
         if (forgotPasswordHeading.isDisplayed()) {
             System.out.println("Test Passed");
         } else {
