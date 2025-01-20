@@ -45,7 +45,7 @@ Expected: Google
             System.out.println("title = test failed. " + title + " is NOT correct title");
         }
 
-        driver.quit();
+        //driver.quit();
     }
 }
 
