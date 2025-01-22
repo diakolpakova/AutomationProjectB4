@@ -13,7 +13,7 @@ import java.time.Duration;
 public class T000_staleElementException {
     public static void main(String[] args) {
 
-                /*1. Open Chrome browser
+        /*1. Open Chrome browser
           2. Go to http://the-internet.herokuapp.com/add_remove_elements/
           3. Click to “Add Element” button
           4. Verify “Delete” button is displayed after clicking.
@@ -56,14 +56,6 @@ public class T000_staleElementException {
 //        } else {
 //            System.out.println("Deleted button is NOT displayed");
 //        }
-
-
-
-
-
-
-
-
 
     }
 }

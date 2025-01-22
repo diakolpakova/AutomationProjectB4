@@ -11,11 +11,11 @@ public class T00_checkBox {
     public static void main(String[] args) {
 
               /*
-        1. Go to http://the-internet.herokuapp.com/checkboxes
-        2. Confirm checkbox #1 is NOT selected by default
-        3. Confirm checkbox #2 is SELECTED by default.
-        4. Click checkbox #1 to select it.
-        5. Click checkbox #2 to deselect it.
+        1. Go to http://the-internet.herokuapp.com/checkboxes +
+        2. Confirm checkbox #1 is NOT selected by default +
+        3. Confirm checkbox #2 is SELECTED by default. +
+        4. Click checkbox #1 to select it. +
+        5. Click checkbox #2 to deselect it. +
         6. Confirm checkbox #1 is SELECTED.
         7. Confirm checkbox #2 is NOT selected.
 
@@ -25,36 +25,53 @@ public class T00_checkBox {
         driver.manage().window().maximize();
         driver.get("http://the-internet.herokuapp.com/checkboxes");
 
-        // 2. Confirm checkbox #1 is not selected by defaulf
+        // 2. Confirm checkbox #1 is not selected by default
         WebElement checkbox1 = driver.findElement(By.xpath("//input//following-sibling::text()[contains(.,'checkbox 1')]/preceding-sibling::input"));
-//        checkbox1.click();
+         //checkbox1.click();
         if (!checkbox1.isSelected()) {
-            System.out.println("Checkbox is NOT selected");
+            System.out.println("Checkbox 1 is NOT selected by default");
         } else {
-            System.out.println("Checkbox is selected");
+            System.out.println("Checkbox 1 is selected");
         }
 
-        checkbox1.click();
+        // 3. Confirm checkbox #2 is SELECTED by default.
+        WebElement checkbox2  = driver.findElement(By.xpath("//input[@type='checkbox' and preceding-sibling::input]"));
+        //checkbox2.click();
+        if (!checkbox2.isSelected()) {
+            System.out.println("Checkbox 2 is NOT selected");
+        } else {
+            System.out.println("Checkbox 2 is selected by default");
+        }
 
+       //  4. Click checkbox #1 to select it. +
+        checkbox1.click();
         if (checkbox1.isSelected()) {
             System.out.println("Checkbox is selected");
         } else {
             System.out.println("Checkbox is NOT selected");
         }
 
+        //5. Click checkbox #2 to deselect it.
+        checkbox2.click();
+        if (checkbox2.isSelected()) {
+            System.out.println("Checkbox 2 is deselected");
+        } else {
+            System.out.println("Checkbox 2 is NOT selected");
+        }
 
-//        WebElement checkbox2 = driver.findElement(By.xpath( "" ));
-//        checkbox2.click();
-//
+        //6. Confirm checkbox #1 is SELECTED
+        if (checkbox1.isSelected()) {
+            System.out.println("Checkbox 1 is selected");
+        } else {
+            System.out.println("Checkbox 1 is NOT selected");
+        }
 
-
-
-
-
-
-
-
-
+        // 7. Confirm checkbox #2 is NOT selected.
+        if (checkbox2.isSelected()) {
+            System.out.println("Checkbox 2 is selected");
+        } else {
+            System.out.println("Checkbox 2 is NOT selected");
+        }
 
     }
 }
