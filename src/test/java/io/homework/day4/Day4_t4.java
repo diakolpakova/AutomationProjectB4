@@ -1,7 +1,6 @@
 package io.homework.day4;
 
 import io.loop.test.utilities.DocuportConstants;
-import io.loop.test.utilities.DocuportUtils;
 import io.loop.test.utilities.GeneralConstants;
 import io.loop.test.utilities.WebDriverUtil;
 import org.openqa.selenium.By;
