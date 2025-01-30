@@ -27,8 +27,13 @@ task 2
         WebElement userName = driver.findElement(By.id("input-14"));
         userName.sendKeys((DocuportConstants.USERNAME_CLIENT));
 
+        Thread.sleep(5000);
+
         WebElement password = driver.findElement(By.id("input-15"));
         password.sendKeys("Group1");
+
+        Thread.sleep(5000);
+
 
         WebElement login = driver.findElement(By.className("v-btn__content"));
         login.click();
