@@ -17,18 +17,17 @@ import java.util.NoSuchElementException;
 
 public class T5_multi_dropdown {
 
-       /*
-    1. Open Chrome browser
-    2. Go to https://demoqa.com/select-menu
-    3. Select all the options from multiple select dropdown.
-    4. Print out all selected values.
-    5. Deselect all values.
-     */
-
+    /*
+ 1. Open Chrome browser
+ 2. Go to https://demoqa.com/select-menu
+ 3. Select all the options from multiple select dropdown.
+ 4. Print out all selected values.
+ 5. Deselect all values.
+  */
     WebDriver driver;
 
     @BeforeMethod
-    public void setUpMethod(){
+    public void before() {
         driver = WebDriverUtil.getDriver(GeneralConstants.BROWSER);
         driver.manage().window().maximize();
         driver.get("https://demoqa.com/select-menu");
@@ -36,64 +35,65 @@ public class T5_multi_dropdown {
     }
 
     @AfterMethod
-    public void tearDownMethod(){
+    public void after() {
         // driver.close();
     }
 
     @Test
     public void multiSelect() throws InterruptedException {
         Select dropdown = new Select(driver.findElement(By.xpath("//select[@id='cars']")));
-        // isMultiple()
+        // isMultiple
         Assert.assertTrue(dropdown.isMultiple(), "Dropdown is not multi select");
+       /*
+       dropdown.selectByIndex(0);
+       Thread.sleep(3000);
 
-      /*  dropdown.selectByIndex(0);
-        Thread.sleep(3000);
+       dropdown.selectByValue("saab");
+       Thread.sleep(3000);
 
-        dropdown.selectByValue("saab");
-        Thread.sleep(3000);
+       dropdown.selectByVisibleText("Opel");
+       Thread.sleep(3000);
 
-        dropdown.selectByVisibleText("Opel");
-        Thread.sleep(3000);
-
-        dropdown.selectByContainsVisibleText("Au");
-        */
+       dropdown.selectByContainsVisibleText("Au");
+       Thread.sleep(3000);
+       */
         List<WebElement> options;
         options = dropdown.getOptions();
 
-        /*
-        for (WebElement option : options) {
-            option.click();
-            System.out.println(option.getText());
 
-         */
-/*
-        options.forEach(option -> {
-            option.click();
-        });
+     /*
+     for (WebElement option : options) {
+         option.click();
+         System.out.println(option.getText())
+         }
+      */
 
- */
-        options.forEach (WebElement::click);
+       /*
+       options.forEach((option -> {
+           option.click();
+           System.out.println(option.getText());
+       })); */
+
+        options.forEach(WebElement::click);
 
         dropdown.deselectAll();
-        Thread.sleep(5000);
+        Thread.sleep(3000);
 
-       /* try {
+       /*
+       try {
          dropdown.getFirstSelectedOption().getText();
-        } catch (Exception e) {
-            System.out.println("No options selected");
-        }
-        */
+       } catch (Exception e) {
+           System.out.println("No option selected");
+       }*/
+
         try {
             Assert.assertEquals(dropdown.getFirstSelectedOption().getText(), "");
         } catch (Exception e) {
-            System.out.println("No option selected");
+            System.out.println("No options selected");
         }
 
-        Assert.assertThrows(org.openqa.selenium.NoSuchElementException.class,
-            dropdown::getFirstSelectedOption);
+        Assert.assertThrows(org.openqa.selenium.NoSuchElementException.class, dropdown::getFirstSelectedOption);
 
-
-
-        }
+        Assert.assertTrue(dropdown.getAllSelectedOptions().isEmpty(), "The list is not empty");
     }
-
+}

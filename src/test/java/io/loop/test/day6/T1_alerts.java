@@ -4,14 +4,17 @@ import io.loop.test.base.TestBase;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
 public class T1_alerts extends TestBase {
+    private static final Logger log = LoggerFactory.getLogger(T1_alerts.class);
 
-            /*
+        /*
     Information alert practice
     1. Open browser
     2. Go to website: https://loopcamp.vercel.app/javascript-alerts.html
@@ -36,65 +39,72 @@ public class T1_alerts extends TestBase {
 
     @Test
     public void informationAlert() throws InterruptedException {
+
+    driver.get("https://loopcamp.vercel.app/javascript-alerts.html");
+
+    WebElement clickForJSAlert = driver.findElement(By.xpath("//button[@onclick='jsAlert()']"));
+    clickForJSAlert.click();
+    Thread.sleep(5000);
+    Alert alert = driver.switchTo().alert();
+    alert.accept();
+
+    WebElement successfulMessageForInformationAlert = driver.findElement(By.xpath("//p[@id='result']"));
+    String expected = "You successfully clicked an alert";
+    String actual = successfulMessageForInformationAlert.getText();
+    assertEquals(actual, expected, "Actual does not match the expected");
+    }
+
+    @Test
+    public void confirmationAlert () throws InterruptedException {
+
         driver.get("https://loopcamp.vercel.app/javascript-alerts.html");
-        WebElement clickForJSAlert = driver.findElement(By.xpath("//button[@onclick='jsAlert()']"));
-        clickForJSAlert.click();
+        WebElement clickForJSConfirm = driver.findElement(By.xpath("//button[@onclick='jsConfirm()']"));
+        clickForJSConfirm.click();
 
-        Alert alert = driver.switchTo().alert();
-        alert.accept();
+        driver.switchTo().alert().accept(); // will click on and accept the alert
+        WebElement successfulMessageForConfirmationAlert = driver.findElement(By.xpath("//p[@id='result']"));
+        String expected = "You clicked: Ok";
+        String actual = successfulMessageForConfirmationAlert.getText();
+        assertEquals(actual, expected, "Actual does not match the expected");
 
-        WebElement successMessageForInformationAlert = driver.findElement(By.xpath("//p[@id='result']"));
-        String expected = "You successfully clicked an alert";
-        String actual = successMessageForInformationAlert.getText();
+        clickForJSConfirm.click();
+        driver.switchTo().alert().dismiss(); // will click cancel - will dismiss the alert
+        expected = "You clicked: Cancel";
+        actual = successfulMessageForConfirmationAlert.getText();
         assertEquals(actual, expected, "Actual does not match the expected");
     }
 
-
     @Test
-    public void confirmationAlert() {
-
+    public void promptAlert () throws InterruptedException {
         driver.get("https://loopcamp.vercel.app/javascript-alerts.html");
-        WebElement clickForJSAlert = driver.findElement(By.xpath("//button[@onclick='jsAlert()']"));
-        clickForJSAlert.click();
-
-
-        driver.switchTo().alert().accept(); // will lick op and accept the alert
-        WebElement successMessageForConfirmationAlert = driver.findElement(By.xpath("//p[@id='result']"));
-        String expected = "You clicked: Ok";
-        String actual = successMessageForConfirmationAlert.getText();
-        assertEquals(actual, expected, "Actual does not match expected");
-
-        clickForJSAlert.click();
-        driver.switchTo().alert().dismiss();
-        expected = "You clicked Cancel";
-        actual = successMessageForConfirmationAlert.getText();
-        assertEquals(actual, expected, "Actual does not match expected");
-
-    }
-
-    @Test
-    public void promptAlert() {
-        driver.get("https://loopcamp.vercel.app/javascript-alerts.html");
-        WebElement clickJSPromt = driver.findElement(By.xpath("//button[.='Click for JS Prompt']"));
-        clickJSPromt.click();
+        WebElement clickForJSPrompt = driver.findElement(By.xpath("//button[.='Click for JS Prompt']"));
+        clickForJSPrompt.click();
 
         String text = "Loopcamp";
 
-//        driver.switchTo().alert().sendKeys(text);
-//        driver.switchTo().alert().accept();
+        /*
+        driver.switchTo().alert().sendKeys(text);
+        driver.switchTo().alert().accept();
+        */
+
         Alert alert = driver.switchTo().alert();
         alert.sendKeys(text);
         alert.accept();
-        WebElement successMessageForPrompt = driver.findElement(By.xpath("//p[@id='result']"));
-        String actual = successMessageForPrompt.getText();
-        String expected = "You entered: " + text;
-        assertEquals(actual, expected, "Actual does not match expected");
 
-        clickJSPromt.click();
+        WebElement successfulMessageForPrompt = driver.findElement(By.xpath("//p[@id='result']"));
+        String actual = successfulMessageForPrompt.getText();
+        String expected = "You entered: " + text;
+        assertEquals(actual,expected, "Actual does not match expected");
+
+        clickForJSPrompt.click();
         alert.sendKeys(text);
         alert.dismiss();
-        actual = successMessageForPrompt.getText();
+        actual = successfulMessageForPrompt.getText();
         expected = "You entered: " + null;
-        assertEquals(actual, expected, "Actual does not match expected");
+        assertEquals(actual,expected, "Actual does not match expected");
+
+
     }
+
 }
+
