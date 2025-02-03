@@ -1,16 +1,10 @@
-package io.homework.day4.practice;
+package io.homework.homework1;
 
 import io.loop.test.base.TestBase;
 import io.loop.test.utilities.DocuportConstants;
-import io.loop.test.utilities.DocuportUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import javax.swing.*;
 
 public class practice2 extends TestBase {
     /*task2
