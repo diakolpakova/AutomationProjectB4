@@ -1,4 +1,4 @@
-package io.homework.day4.practice;
+package io.homework.homework1;
 
 import io.loop.test.utilities.GeneralConstants;
 import io.loop.test.utilities.WebDriverUtil;
