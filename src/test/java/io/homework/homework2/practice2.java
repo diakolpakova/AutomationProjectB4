@@ -40,17 +40,19 @@ Switch to new window and validate title
         WebElement clickHere = driver.findElement(By.xpath("//a[contains(text(),'Click Here')]"));
         clickHere.click();
 
+//        Set<String> windowHandles = driver.getWindowHandles();
+//        for (String window : windowHandles) {
+//            driver.switchTo().window(window).getTitle(); {
+//                if (driver.getTitle().equals("Windows")) {
+//                    continue;
+//                } else {
+//                    System.out.println("driver.getTitle() = " + driver.getTitle());
+//                }
+
         Set<String> windowHandles = driver.getWindowHandles();
         for (String window : windowHandles) {
-            driver.switchTo().window(window).getTitle(); {
-                if (driver.getTitle().equals("Windows")) {
-                    continue;
-                } else {
-                    System.out.println("driver.getTitle() = " + driver.getTitle());
-                }
-
-
+            driver.switchTo().window(window).getTitle();
             }
-        }
+        System.out.println("driver.getTitle() = " + driver.getTitle());
     }
 }

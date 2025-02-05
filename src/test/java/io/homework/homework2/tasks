@@ -1,13 +1,28 @@
+Practice Task
+=============
+
+
 task1
 =============
-go to https://loopcamp.vercel.app/nested-frames.html
-validate "LEFT", "MIDDLE", "RIGHT", "BOTTOM"
+    go to https://loopcamp.vercel.app/nested-frames.html
+    validate "LEFT", "MIDDLE", "RIGHT", "BOTTOM"
 
 task2
 =============
-go to https://loopcamp.vercel.app/
-click "Multiple Windows" link
-Validate "Powered by Loopcamp" is displayed
-Validate title is "Windows"
-Click - click here
-Switch to new window and validate title
+
+    1. login as an advisor
+    2. go to users
+    3. validate that full name for alex.de.souza@gmail.com is Alex De Souza - we did in class
+    4. validate that user name for alex.de.souza@gmail.com is alexdesouze
+    5. validate that phone number for alex.de.souza@gmail.com is +994512060042
+    6. validate that role for alex.de.souza@gmail.com is client
+    7. validate that advisor for alex.de.souza@gmail.com is  Batch1 Group1
+
+task3
+=============
+    1. go to https://loopcamp.vercel.app/
+    2. click "Multiple Windows" link
+    3. Validate "Powered by Loopcamp" is displayed
+    4. Validate title is "Windows"
+    5. Click - click here
+    6. Switch to new window and validate title
