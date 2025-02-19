@@ -25,9 +25,12 @@ public class Task2 {
         @Test
     public void task2() {
             smartBearSoftware.userNameBear.sendKeys(ConfigurationReader.getProperties("smartBear.username"));
+
             smartBearSoftware.passwordBear.sendKeys(ConfigurationReader.getProperties("smartBear.password"));
+
             smartBearSoftware.loginButton.click();
             System.out.println("Count of all the links on landing page: " + smartBearSoftware.allLinks.size());
+
             BrowserUtils.eachLink(smartBearSoftware.allLinks);
 
 

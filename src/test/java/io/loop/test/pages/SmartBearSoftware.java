@@ -11,16 +11,12 @@ public class SmartBearSoftware {
     public SmartBearSoftware() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
-
     @FindBy(xpath = "//input[@type='text']")
     public WebElement userNameBear;
-
     @FindBy(xpath = "//input[@type='password']")
     public WebElement passwordBear;
-
     @FindBy(xpath = "//input[@type='submit']")
     public WebElement loginButton;
-
     @FindBy(xpath = "//ul[@id='ctl00_menu']//li")
     public List<WebElement> allLinks;
 
